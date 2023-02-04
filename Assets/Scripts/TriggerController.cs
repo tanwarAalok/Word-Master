@@ -8,15 +8,19 @@ public class TriggerController : MonoBehaviour
     public static bool wordGameStart = false;
     public SpeakerController sc;
 
-    void OnTriggerEnter2D(Collider2D coll) {
-        wordGameStart = true;
-        sc.playAudio();
+    public void WordGameStart(bool value){
+        wordGameStart = value;
         canvas.SetActive(wordGameStart);
     }
 
+    void OnTriggerEnter2D(Collider2D coll) {
+        WordGameStart(true);
+        sc.playAudio();
+    
+    }
+
     void OnCollisionEnter2D(Collision2D other) {
-        wordGameStart = false;
-        canvas.SetActive(wordGameStart);
+        WordGameStart(false);
     }
 
 }

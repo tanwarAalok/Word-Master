@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     int level = 1;
     public static int score = 0;
 
-    public void LoadNextScene()
+
+    public static void LoadNextScene()
     {
         int levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(levelIndex);
@@ -28,5 +29,10 @@ public class GameManager : MonoBehaviour
     {
         level = 3;
         LoadNextScene();
+    }
+
+    public void MainMenu(){
+        SceneManager.LoadScene(0);
+        score = 0;
     }
 }

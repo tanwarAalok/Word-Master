@@ -14,6 +14,10 @@ public class SpeakerController : MonoBehaviour
 
     public AudioClip[] spellingsAudio;
     public string[] spellings;
+    public GameObject[] obstacles;
+
+    public TriggerController tc;
+    public PlayerController player;
 
     AudioSource audiosource;
 
@@ -49,7 +53,14 @@ public class SpeakerController : MonoBehaviour
     public void wordSubmitted(){
         int index = GameManager.score;
         if(wordInput.text == spellings[index]){
-            Debug.Log("Correct");
+            wordInput.text = "";
+            player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 300);
+            obstacles[index].SetActive(false);
+            tc.WordGameStart(false);
+            GameManager.score++;
+            if(GameManager.score == obstacles.Length){
+                GameManager.LoadNextScene();
+            }
         }
     }
 }
