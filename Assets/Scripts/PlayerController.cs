@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         if(TriggerController.wordGameStart){
           transform.Translate(Vector2.right * wordGameSpeed * Time.deltaTime);
           transform.position = new Vector3(transform.position.x , 3.0f, transform.position.z);
+          GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
         else {
           transform.Translate(Vector2.right * speed * Time.deltaTime);
