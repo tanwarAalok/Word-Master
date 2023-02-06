@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static float level = 1;
     public static int score = 0;
 
+    public static int maxScore = 2;
+
 
     public static void LoadNextScene()
     {

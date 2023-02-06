@@ -16,6 +16,7 @@ public class SpeakerController : MonoBehaviour
     public string[] spellings;
     public GameObject[] obstacles;
 
+
     public TriggerController tc;
     public PlayerController player;
 
