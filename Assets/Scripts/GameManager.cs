@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    int level = 1;
+    public static float level = 1;
     public static int score = 0;
 
 
@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour
     }
     public void mediumLevel()
     {
-        level = 2;
+        level = 1.5f;
         LoadNextScene();
     }
     public void hardLevel()
     {
-        level = 3;
+        level = 2;
         LoadNextScene();
     }
 

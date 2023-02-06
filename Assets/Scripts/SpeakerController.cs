@@ -54,7 +54,7 @@ public class SpeakerController : MonoBehaviour
         int index = GameManager.score;
         if(wordInput.text == spellings[index]){
             wordInput.text = "";
-            player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 300);
+            // player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 300);
             obstacles[index].SetActive(false);
             tc.WordGameStart(false);
             GameManager.score++;

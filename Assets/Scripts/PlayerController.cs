@@ -6,17 +6,18 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 0.01f;
+    private float speed = 2f;
 
-    public float easySpeed = 0.005f;
+    private float wordGameSpeed = 0.5f;
+
     public TMP_Text scoreText;
    
     // Flap force
     public float force = 300;
 
-    void Start () {    
-        // Fly towards the right
-        transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.y);
+    private void Start() {
+      speed = speed * GameManager.level;
+      wordGameSpeed = wordGameSpeed * GameManager.level;
     }
    
     // Update is called once per frame
@@ -29,7 +30,8 @@ public class PlayerController : MonoBehaviour
         }
 
         if(TriggerController.wordGameStart){
-          transform.position = new Vector3(transform.position.x + easySpeed, 3.0f, transform.position.z);
+          transform.Translate(Vector2.right * wordGameSpeed * Time.deltaTime);
+          transform.position = new Vector3(transform.position.x , 3.0f, transform.position.z);
         }
         else {
           transform.Translate(Vector2.right * speed * Time.deltaTime);
