@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -11,9 +12,11 @@ public class PlayerController : MonoBehaviour
     private float wordGameSpeed = 0.5f;
 
     public TMP_Text scoreText;
+
    
     // Flap force
     public float force = 300;
+    public float touch_force = 100;
     
 
     private void Start() {
@@ -26,8 +29,12 @@ public class PlayerController : MonoBehaviour
         scoreText.text = "Score : " + GameManager.score.ToString();
       
         // Flap
-        if (!TriggerController.wordGameStart && Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0){
+        if (!TriggerController.wordGameStart && Input.GetKeyDown(KeyCode.Space)){
           GetComponent<Rigidbody2D>().AddForce(Vector2.up * force);
+        }
+
+        if(!TriggerController.wordGameStart && Input.touchCount > 0){
+          GetComponent<Rigidbody2D>().AddForce(Vector2.up * touch_force);
         }
 
         if(TriggerController.wordGameStart){
