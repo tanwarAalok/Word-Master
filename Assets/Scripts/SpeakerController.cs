@@ -20,6 +20,7 @@ public class SpeakerController : MonoBehaviour
     public TriggerController tc;
     public PlayerController player;
 
+
     AudioSource audiosource;
 
     void Start() {
@@ -31,6 +32,7 @@ public class SpeakerController : MonoBehaviour
             speaker.image.sprite = openSpeakerSprite;
         }
         else speaker.image.sprite = closedSpeakerSprite;
+
     }
 
     public void playAudio()
@@ -55,7 +57,6 @@ public class SpeakerController : MonoBehaviour
         int index = GameManager.score;
         if(wordInput.text == spellings[index]){
             wordInput.text = "";
-            // player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 300);
             obstacles[index].SetActive(false);
             tc.WordGameStart(false);
             GameManager.score++;
@@ -64,4 +65,5 @@ public class SpeakerController : MonoBehaviour
             }
         }
     }
+
 }

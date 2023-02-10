@@ -10,6 +10,62 @@ public class GameManager : MonoBehaviour
 
     public static int maxScore = 2;
 
+    public GameObject image = null;
+
+    AudioSource audiosource;
+
+    [SerializeField] AudioClip bgMusic_menu = null;
+    [SerializeField] AudioClip bgMusic = null;
+    [SerializeField] AudioClip gameOver_Music = null;
+    [SerializeField] AudioClip gameWon_Music = null;
+
+    public static bool playCollide = false;
+    
+    private void Start() {
+        audiosource = GetComponent<AudioSource>();
+
+        if(SceneManager.GetActiveScene().buildIndex < 2){
+            PlayMenuMusic();
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 2){
+            PlayGameMusic();
+        }
+        else{
+            if(score != maxScore){
+                GameOverMusic();
+            }
+            else GameWonMusic();
+        }
+
+        
+        // else if(SceneManager.GetActiveScene().buildIndex <= 4 && SceneManager.GetActiveScene().buildIndex >= 2){
+        //     PlayGameMusic();
+        // }
+    }
+
+
+    public void PlayMenuMusic(){
+        audiosource.clip = bgMusic_menu;
+        audiosource.Play();
+    }
+
+    public void PlayGameMusic(){
+        audiosource.clip = bgMusic;
+        audiosource.Play();
+    }
+    
+    public void GameOverMusic(){
+        audiosource.clip = gameOver_Music;
+        audiosource.Play();
+    }
+
+    public void GameWonMusic(){
+        audiosource.clip = gameWon_Music;
+        audiosource.Play();
+    }
+
+    
+
 
     public static void LoadNextScene()
     {
@@ -36,5 +92,13 @@ public class GameManager : MonoBehaviour
     public void MainMenu(){
         SceneManager.LoadScene(0);
         score = 0;
+    }
+
+    public void OpenHelp(){
+        image.SetActive(true);
+    }
+
+    public void CloseHelp(){
+        image.SetActive(false);
     }
 }

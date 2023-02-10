@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
    
     // Flap force
     public float force = 300;
+    
 
     private void Start() {
       speed = speed * GameManager.level;
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
         scoreText.text = "Score : " + GameManager.score.ToString();
       
         // Flap
-        if (!TriggerController.wordGameStart && Input.GetKeyDown(KeyCode.Space)){
+        if (!TriggerController.wordGameStart && Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0){
           GetComponent<Rigidbody2D>().AddForce(Vector2.up * force);
         }
 
