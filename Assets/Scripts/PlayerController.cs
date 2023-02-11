@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public TMP_Text scoreText;
 
+    bool isCollided = false;
+
    
     // Flap force
     public float force = 300;
@@ -42,16 +44,18 @@ public class PlayerController : MonoBehaviour
           transform.position = new Vector3(transform.position.x , 3.0f, transform.position.z);
           GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
-        else {
+        else if(!isCollided) {
           transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
     }
 
     void OnCollisionEnter2D(Collision2D coll) {
       if(coll.gameObject.CompareTag("Obstacle")){
+        isCollided = true;
+      }
+      else if(coll.gameObject.CompareTag("border")){
         GameManager.LoadNextScene();
       }
-
     }
 
 }
