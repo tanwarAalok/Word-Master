@@ -50,6 +50,7 @@ MonoBehaviour:
   bgMusic: {fileID: 8300000, guid: ba835e5ce5f2ce0428d5cd50e162d44e, type: 3}
   gameOver_Music: {fileID: 8300000, guid: b53c108978e56a24dac89b15a83824c0, type: 3}
   gameWon_Music: {fileID: 8300000, guid: 0832f9f9937059442a6e5224bdaf1d2c, type: 3}
+  collide_Music: {fileID: 8300000, guid: 2e73dfef05c9ebc408470fc20f2462d3, type: 3}
 --- !u!82 &6384595595676843174
 AudioSource:
   m_ObjectHideFlags: 0

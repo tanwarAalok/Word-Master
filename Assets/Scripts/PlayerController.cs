@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll) {
       if(coll.gameObject.CompareTag("Obstacle")){
+        GameManager.playCollide = true;
         isCollided = true;
       }
       else if(coll.gameObject.CompareTag("border")){

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip bgMusic = null;
     [SerializeField] AudioClip gameOver_Music = null;
     [SerializeField] AudioClip gameWon_Music = null;
+    [SerializeField] AudioClip collide_Music = null;
 
     public static bool playCollide = false;
     
@@ -42,6 +43,14 @@ public class GameManager : MonoBehaviour
         // else if(SceneManager.GetActiveScene().buildIndex <= 4 && SceneManager.GetActiveScene().buildIndex >= 2){
         //     PlayGameMusic();
         // }
+    }
+
+    private void Update() {
+        if(playCollide){
+            audiosource.clip = collide_Music;
+            audiosource.Play();
+            playCollide = false;
+        }
     }
 
 
